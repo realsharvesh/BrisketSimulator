@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dihgu8jj6a3gm"]
+
+[ext_resource type="Texture2D" uid="uid://lgieeww24k26" path="res://brisket.jpg" id="1_lo6sr"]
+[ext_resource type="Script" uid="uid://7njx6tci3rwr" path="res://thrownbrisket.gd" id="1_xm2p6"]
+[ext_resource type="Texture2D" uid="uid://g7fdsjtlh6gm" path="res://raw.jpg" id="2_gyyjp"]
+[ext_resource type="Texture2D" uid="uid://chn0i1notqg5s" path="res://burnt.png" id="4_2lhh5"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_df8ov"]
+friction = 0.2
+bounce = 0.5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7mycd"]
+size = Vector2(180, 133)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_df8ov"]
+size = Vector2(183, 135)
+
+[node name="thrownbrisket" type="RigidBody2D" unique_id=92979972]
+collision_layer = 4
+physics_material_override = SubResource("PhysicsMaterial_df8ov")
+script = ExtResource("1_xm2p6")
+raw = ExtResource("2_gyyjp")
+cooked = ExtResource("1_lo6sr")
+burnt = ExtResource("4_2lhh5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1649738478]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_7mycd")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1031822316]
+scale = Vector2(0.28, 0.28)
+texture = ExtResource("1_lo6sr")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1255366734]
+position = Vector2(0, 6)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1102252272]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1838406304]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_df8ov")
